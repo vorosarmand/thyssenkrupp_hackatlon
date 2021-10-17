@@ -70,7 +70,18 @@ float getSteer(structCarState *cs)
 {
 	// steering angle is compute by correcting the actual car angle w.r.t. to track 
 	// axis [cs->angle] and to adjust car position w.r.t to middle of track [cs->trackPos*0.5]
-    float targetAngle=(cs->angle-cs->trackPos*0.5);
+    //float targetAngle=(cs->angle-cs->trackPos*0.5);
+	
+	float trackPos;
+    if (cs->trackPos > 1)
+        trackPos = 0.99;
+    else if (cs->trackPos < -1)
+        trackPos = -0.99;
+    else
+        trackPos = cs->trackPos;
+
+    float targetAngle = (cs->angle - sqrt(abs(trackPos)) * trackPos) * 4;
+	
     // at high speed reduce the steering command to avoid loosing the control
     if (cs->speedX > steerSensitivityOffset)
         return targetAngle/(steerLock*(cs->speedX-steerSensitivityOffset)*wheelSensitivityCoeff);
