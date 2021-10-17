@@ -117,7 +117,7 @@ float getAccel(structCarState *cs)
                 float b = rxSensor - cSensor*cos5;
                 float sinAngle = b*b/(h*h+b*b);
                 // estimate the target speed depending on turn and on how close it is
-                targetSpeed = maxSpeed*(rxSensor*sinAngle/maxSpeedDist);
+                targetSpeed = maxSpeed*(cSensor*sinAngle/maxSpeedDist);
             }
             // approaching a turn on left
             else
@@ -127,7 +127,7 @@ float getAccel(structCarState *cs)
                 float b = sxSensor - cSensor*cos5;
                 float sinAngle = b*b/(h*h+b*b);
                 // estimate the target speed depending on turn and on how close it is
-                targetSpeed = maxSpeed*(sxSensor*sinAngle/maxSpeedDist);
+                targetSpeed = maxSpeed*(cSensor*sinAngle/maxSpeedDist);
             }
 
         }
