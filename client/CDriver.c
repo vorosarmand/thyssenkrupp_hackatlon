@@ -15,8 +15,8 @@ const int stuckTime = 25;
 const float stuckAngle = .523598775; //PI/6
 
 /* Accel and Brake Constants*/
-const float maxSpeedDist=100;
-const float maxSpeed=190;
+const float maxSpeedDist=70;
+const float maxSpeed=180;
 const float sin5 = 0.08716;
 const float cos5 = 0.99619;
 
@@ -71,17 +71,6 @@ float getSteer(structCarState *cs)
 	// steering angle is compute by correcting the actual car angle w.r.t. to track 
 	// axis [cs->angle] and to adjust car position w.r.t to middle of track [cs->trackPos*0.5]
     float targetAngle=(cs->angle-cs->trackPos*0.5);
-	/*
-	float trackPos;
-    if (cs->trackPos > 1)
-        trackPos = 0.99;
-    else if (cs->trackPos < -1)
-        trackPos = -0.99;
-    else
-        trackPos = cs->trackPos;
-
-    float targetAngle = (cs->angle - sqrt(abs(trackPos)) * trackPos) * 4;
-	*/
     // at high speed reduce the steering command to avoid loosing the control
     if (cs->speedX > steerSensitivityOffset)
         return targetAngle/(steerLock*(cs->speedX-steerSensitivityOffset)*wheelSensitivityCoeff);
