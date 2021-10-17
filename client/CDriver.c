@@ -3,7 +3,7 @@
 /* Gear Changing Constants*/
 const int gearUp[6]=
     {
-        5000,6000,6000,6500,7000,0
+        7500,7500,7500,7500,7500,0
     };
 const int gearDown[6]=
     {
