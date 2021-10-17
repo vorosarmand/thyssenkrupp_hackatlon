@@ -16,7 +16,7 @@ const float stuckAngle = .523598775; //PI/6
 
 /* Accel and Brake Constants*/
 const float maxSpeedDist=70;
-const float maxSpeed=150;
+const float maxSpeed=180;
 const float sin5 = 0.08716;
 const float cos5 = 0.99619;
 
